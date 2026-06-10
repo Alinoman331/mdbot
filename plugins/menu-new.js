@@ -84,7 +84,7 @@ async (conn, mek, m, { from, sender, reply }) => {
           url: "https://whatsapp.com/channel/0029Vb8C0KE6rsQt5xpfZf1m"
           
         },
-        image: "https://up6.cc/2026/06/178101799208131.png"
+        image: "https://up6.cc/2026/06/178111533227781.jpg"
       },
 
       {
@@ -115,7 +115,7 @@ async (conn, mek, m, { from, sender, reply }) => {
           text: "𝐎𝐖𝐍𝐄𝐑",
           url: "https://whatsapp.com/channel/0029Vb8C0KE6rsQt5xpfZf1m"
         },
-        image: "https://up6.cc/2026/06/178101799208131.png"
+        image: "https://up6.cc/2026/06/178111568691251.jpg"
       },
 
       {
@@ -140,7 +140,7 @@ async (conn, mek, m, { from, sender, reply }) => {
           text: "𝗖𝗛𝗔𝗡𝗡𝗘𝗟",
           url: "https://whatsapp.com/channel/0029Vb8C0KE6rsQt5xpfZf1m"
         },
-        image: "https://up6.cc/2026/06/178101799208131.png"
+        image: "https://up6.cc/2026/06/178111593061651.jpg"
       },
 
       {
