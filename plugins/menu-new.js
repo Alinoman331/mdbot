@@ -22,13 +22,14 @@ async (conn, mek, m, { from, sender, reply }) => {
       {
         title: "𝐌𝐀𝐈𝐍 𝐌𝐄𝐍𝐔",
         desc: `
-*🎀 MAIN MENU | ALI MD 🎀*
-♡ *Hello:* @${sender.split('@')[0]}
-♡ *Bot:* ${config.BOT_NAME}
-♡ *Mode:* ${config.MODE}
-♡ *Uptime:* ${runtime(process.uptime())}
-♡ *Platform:* ${os.platform()}
-♡ *Version:* 1.0.0
+*┌──「 ⚡ SYSTEM INFO 」──┐*
+*│* 👤 *User:* @${sender.split('@')[0]}
+*│* 🤖 *Bot:* ${config.BOT_NAME}
+*│* ⚙️ *Mode:* ${config.MODE}
+*│* ⏱️ *Uptime:* ${runtime(process.uptime())}
+*│* 🖥️ *Platform:* ${os.platform()}
+*│* 🏷️ *Version:* 1.0.0
+*└──────────────────────┘*
 `,
         button: {
           text: "❀ α𝙻𝙸_𝙼𝙳 ❀",
@@ -40,8 +41,8 @@ async (conn, mek, m, { from, sender, reply }) => {
 {
         title: "𝐔𝐒𝐄𝐅𝐔𝐋𝐋-𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒",
         desc: `
-*╭┉┉┉┉┉┉┉┉┉┉┉┉━┈᛭*
-*┇*❁╭┉┉┉┉┉┉┉━•⟢
+*╭┉┉┉┉┉┉┉┉┉┉┉━┈⊰*
+*┇*❁╭┉┉┉┉┉┉┉━┈⊷
 *┇*✾┋. *setprefix*
 *┇*✾┋. *autoreact*
 *┇*✾┋. *_sᴛɪᴄᴋᴇʀ_*
@@ -62,8 +63,8 @@ async (conn, mek, m, { from, sender, reply }) => {
       {
         title: "𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃",
       desc: `
-*╭┉┉┉┉┉┉┉┉┉┉┉┉━┈᛭*
-*┇*❁╭┉┉┉┉┉┉┉━•⟢
+*╭┉┉┉┉┉┉┉┉┉┉┉━┈⊰*
+*┇*❁╭┉┉┉┉┉┉┉━┈⊷
 *┇*✾┋. *_ғᴀᴄᴇʙᴏᴏᴋ_*
 *┇*✾┋. *_ᴛɪᴋᴛᴏᴋ_* 
 *┇*✾┋. *_ᴘɪɴᴛᴇʀᴇsᴛ_*
@@ -73,8 +74,9 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*✾┋. *_ᴀᴘᴋ_*
 *┇*✾┋. *_ᴍᴇᴅɪᴀғɪʀᴇ_*
 *┇*✾┋. *_ɢᴅʀɪᴠᴇ_*
-*┇*✾╰┉┉┉┉━┈⊷
-*╰┉┉┉┉┉┉┉┉━┈⊰*`,
+*┇*✾╰┉┉┉┉┉┉┉━┈⊷
+*╰┉┉┉┉┉┉┉┉┉┉━┈⊰*
+`,
         button: {
           text: "𝗖𝗛𝗔𝗡𝗡𝗘𝗟",
           url: "https://whatsapp.com/channel/0029Vb8C0KE6rsQt5xpfZf1m"
@@ -86,8 +88,8 @@ async (conn, mek, m, { from, sender, reply }) => {
       {
         title: "𝐎𝐖𝐍𝐄𝐑",
     desc: `
-*╭┉┉┉┉┉┉┉┉┉┉┉┉━┈᛭*
-*┇*❁╭┉┉┉┉┉┉┉━•⟢
+*╭┉┉┉┉┉┉┉┉┉┉┉━┈⊰*
+*┇*❁╭┉┉┉┉┉┉┉━┈⊷
 *┇*✾┋. *ping*
 *┇*✾┋. *owner*
 *┇*✾┋. *bot*
