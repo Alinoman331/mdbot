@@ -45,10 +45,10 @@ async (conn, mek, m, { from, sender, reply }) => {
 *╰┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉━┈᛭*
 `,
         button: {
-          text: "❀ α𝙻𝙸_𝙼𝙳 ❀",
-          url: "https://whatsapp.com/channel/0029Vb8C0KE6rsQt5xpfZf1m"
+          text: "❀ ᴬᴸᴵ - ᴹᴰ ❀",
+          url: "https://whatsapp.com/channel/0029VbAeVGu4o7qFfdhttJ0y"
         },
-        image: "https://up6.cc/2026/06/178101799208131.png"
+        image: "https://up6.cc/2026/05/178015060165431.jpg"
       },
 
       {
@@ -80,11 +80,10 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*✾╰┉┉┉┉┉┉┉┉┉┉━┈⊷
 *╰┉┉┉┉┉┉┉┉┉┉┉┉┉┉━┈⊰*`,
         button: {
-          text: "𝗖𝗛𝗔𝗡𝗡𝗘𝗟",
-          url: "https://whatsapp.com/channel/0029Vb8C0KE6rsQt5xpfZf1m"
-          
+          text: "𝗚𝗥𝗢𝗨𝗣",
+          url: "https://chat.whatsapp.com/G5EuQGqKK8CGQdreU0bi0i?mode=gi_t"
         },
-        image: "https://up6.cc/2026/06/178101799208131.png"
+        image: "https://up6.cc/2026/05/178015066795111.jpg"
       },
 
       {
@@ -113,9 +112,9 @@ async (conn, mek, m, { from, sender, reply }) => {
 *╰┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉━┈⊰*`,
         button: {
           text: "𝐎𝐖𝐍𝐄𝐑",
-          url: "https://whatsapp.com/channel/0029Vb8C0KE6rsQt5xpfZf1m"
+          url: "https://wa.me/+923213509846"
         },
-        image: "https://up6.cc/2026/06/178101799208131.png"
+        image: "https://up6.cc/2026/05/178015078042051.png"
       },
 
       {
@@ -163,9 +162,9 @@ async (conn, mek, m, { from, sender, reply }) => {
 *╰┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉━┈⊰*`,
         button: {
           text: "𝗖𝗛𝗔𝗡𝗡𝗘𝗟",
-          url: "https://whatsapp.com/channel/0029Vb8C0KE6rsQt5xpfZf1m"
+          url: "https://whatsapp.com/channel/0029VbAeVGu4o7qFfdhttJ0y"
         },
-        image: "https://up6.cc/2026/06/178101799208131.png"
+        image: "https://up6.cc/2026/05/178015063883161.jpg"
       },
 
       {
@@ -188,9 +187,9 @@ async (conn, mek, m, { from, sender, reply }) => {
 *╰┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉━┈⊰*`,
         button: {
           text: "𝗖𝗛𝗔𝗡𝗡𝗘𝗟",
-          url: "https://whatsapp.com/channel/0029Vb8C0KE6rsQt5xpfZf1m"
+          url: "https://whatsapp.com/channel/0029VbAeVGu4o7qFfdhttJ0y"
         },
-        image: "https://up6.cc/2026/06/178101799208131.png"
+        image: "https://up6.cc/2026/05/178015071279171.jpg"
       },
 
       {
@@ -216,9 +215,9 @@ async (conn, mek, m, { from, sender, reply }) => {
 *╰┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉━┈⊰*`,
         button: {
           text: "𝗖𝗛𝗔𝗡𝗡𝗘𝗟",
-          url: "https://whatsapp.com/channel/0029Vb8C0KE6rsQt5xpfZf1m"
+          url: "https://whatsapp.com/channel/0029VbAeVGu4o7qFfdhttJ0y"
         },
-        image: "https://up6.cc/2026/06/178101799208131.png"
+        image: "https://up6.cc/2026/05/178015075222941.png"
       }
     ];
 
