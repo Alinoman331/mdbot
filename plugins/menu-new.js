@@ -254,7 +254,7 @@ async (conn, mek, m, { from, sender, reply }) => {
         viewOnceMessage: {
           message: {
             interactiveMessage: {
-              body: { text: "⿻l ꙰❀ ρяσχαв∂υℓℓαн ❀ ꙰⿻" },
+              body: { text: "⿻l ꙰❀ ᴬᴸᴵ - ᴹᴰ ❀ ꙰⿻" },
               footer: { text: "Swipe ⬅️➡️ to explore all commands" },
               carouselMessage: { cards }
             }
