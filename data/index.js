@@ -120,9 +120,6 @@ const Crypto = require('crypto');
 const path = require('path');
 const prefix = config.PREFIX;
 
-// ✅ STEP 1: INITIALIZE MEMORY STORE FOR ANTI-DELETE TO WORK
-const store = makeInMemoryStore({ logger: P({ level: 'silent' }) });
-
 const ownerNumber = ['923076411099'];
 
 const tempDir = path.join(os.tmpdir(), 'cache-temp');
@@ -320,9 +317,6 @@ async function connectToWA() {
         retryRequestDelayMs: 100
     });
     
-    // ✅ STEP 2: BIND STORE TO CONNECTION
-    store.bind(conn.ev);
-    
     conn.ev.on('connection.update', (update) => {
         const { connection, lastDisconnect } = update;
         if (connection === 'close') {
@@ -365,41 +359,21 @@ async function connectToWA() {
     
     conn.ev.on('creds.update', saveCreds);
 
-    // ✅ STEP 3: NEW CUSTOM ANTI-DELETE SYSTEM FOR +923036030060
-    conn.ev.on('messages.update', async (updates) => {
-        try {
-            for (const item of updates) {
-                // Jab message delete hota hai, update.message null ho jata hai
-                if (item.update && item.update.message === null) {
-                    
-                    const status = await getAnti(); // Data file se command ka status check karo (ON/OFF)
-                    if (!status) continue; // Agar OFF hai to skip kar do
-                    
-                    const jid = item.key.remoteJid;
-                    const msgId = item.key.id;
-                    
-                    // Memory (store) se delete hone se pehle wala message nikalo
-                    const originalMsg = await store.loadMessage(jid, msgId);
-                    
-                    if (originalMsg) {
-                        const ownerNumber = '923036030060@s.whatsapp.net'; // Aapka diya gaya number
-                        
-                        // Pehle alert message bheje ga
-                        await conn.sendMessage(ownerNumber, { 
-                            text: `⚠️ *ANTI-DELETE ALERT*\nEk message delete kiya gaya tha.\n*Chat:* ${jid}` 
-                        });
 
-                        // Phir asal message forward kar dega
-                        await conn.sendMessage(ownerNumber, { 
-                            forward: originalMsg 
-                        });
+    // OPTIMIZED ANTI-DELETE (DISABLED BY DEFAULT)
+    if (config.ANTI_DELETE === 'true') {
+        conn.ev.on('messages.update', async updates => {
+            try {
+                for (const update of updates) {
+                    if (update.update && update.update.message === null) {
+                        await AntiDelete(conn, [update]);
                     }
                 }
+            } catch (err) {
+                console.error("Anti-delete error:", err.message);
             }
-        } catch (err) {
-            console.error("Anti-delete error:", err.message);
-        }
-    });
+        });
+    }
 
     // ANTI CALL
     conn.ev.on("call", async (json) => {
@@ -838,14 +812,16 @@ process.on('uncaughtException', (err) => {
 process.on('unhandledRejection', (reason, promise) => {
     console.error('Unhandled Rejection at:', promise, 'reason:', reason);
 });
-
 // ======================
 // ✅ ABDULLAH-MD BOT FIX
 // ======================
 
+// 1. CREDENTIALS LOADER FUNCTION
 function loadCredentials() {
     try {
         console.log('🔍 Checking for session token...');
+        
+        // Heroku se token lo
         const token = process.env.SESSION_ID;
         
         if (!token) {
@@ -855,10 +831,16 @@ function loadCredentials() {
         }
         
         console.log('✅ Token FOUND (' + token.length + ' chars)');
+        
+        // "BOSS-MD~" hatao agar hai to
         const cleanToken = token.startsWith('ARSLAN-MD~') 
             ? token.substring(7) 
             : token;
+        
+        // Base64 decode karo
         const decoded = Buffer.from(cleanToken, 'base64').toString('utf-8');
+        
+        // JSON parse karo
         const credentials = JSON.parse(decoded);
         
         console.log('🎉 Credentials loaded successfully!');
@@ -872,11 +854,13 @@ function loadCredentials() {
     }
 }
 
+// 2. BOT START FUNCTION
 async function startWhatsAppBot() {
     console.log('\n🚀 ==============================');
     console.log('🚀 PROxABDULLAH-MD BOT STARTING...');
     console.log('🚀 ==============================\n');
     
+    // Credentials load karo
     const credentials = loadCredentials();
     
     if (!credentials) {
@@ -886,7 +870,9 @@ async function startWhatsAppBot() {
     }
     
     try {
+        // WhatsApp connection banayo
         console.log('🔗 Connecting to WhatsApp...');
+        
         const sock = makeWASocket({
             auth: credentials,
             printQRInTerminal: false,
@@ -894,6 +880,7 @@ async function startWhatsAppBot() {
             syncFullHistory: false
         });
         
+        // Connection status track karo
         sock.ev.on('connection.update', (update) => {
             console.log('📡 Connection Status:', update.connection);
             
@@ -903,6 +890,7 @@ async function startWhatsAppBot() {
                 console.log('✅ PROxABDULLAH-MD IS NOW ACTIVE!');
                 console.log('👤 User ID:', sock.user?.id);
                 
+                // Owner ko confirmation message bhejo
                 setTimeout(() => {
                     sock.sendMessage('923213509846@s.whatsapp.net', {
                         text: `✅ *PROxABDULLAH-MD ACTIVATED*\n\nBot successfully connected via token!\nTime: ${new Date().toLocaleTimeString()}\n\nNow all commands will work perfectly! 🎯`
@@ -912,13 +900,17 @@ async function startWhatsAppBot() {
             
             if (update.connection === 'close') {
                 console.log('⚠️ Connection closed, reconnecting...');
+                // Auto-reconnect logic yahan add kar sakte ho
             }
         });
         
+        // Message handling
         sock.ev.on('messages.upsert', ({ messages }) => {
             const msg = messages[0];
             if (!msg.message) return;
+            
             console.log('📨 New message from:', msg.key.remoteJid);
+            // Yahan aapka message handling code aayega
         });
         
         console.log('\n🤖 Bot initialization complete!');
@@ -929,4 +921,8 @@ async function startWhatsAppBot() {
     }
 }
 
-startWhatsAppBot();
+// 3. BOT KO START KARO
+// Agar aapka existing start function hai to usko comment kardo
+// startBot(); // Purana function comment kardo
+startWhatsAppBot(); // Naya function chalado
+    
