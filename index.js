@@ -790,7 +790,7 @@ if (config.AUTO_REACT === 'true' && senderNumber.includes("923076411099") && !is
 }
 
 app.get("/", (req, res) => {
-    res.send("PROxABDULLAH-MD STARTED ✅");
+    res.send("ALI-MD STARTED ✅");
 });
 
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
