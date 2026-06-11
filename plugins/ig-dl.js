@@ -29,15 +29,15 @@ cmd({
 
         for (const item of response.data.data) {
             const caption = 
-`╭─────────────────⭓
+`╭─────────────⭓
 │  📥 *INSTAGRAM DOWNLOADER*
-├─────────────────
+├───────────
 │  ✦ *Type:* ${item.type === 'video' ? '🎬 Video' : '📷 Image'}
-│  ✦ *Downloaded by:* PROxABDULLAH-MD
+│  ✦ *Downloaded by:* ᴬᴸᴵ - ᴹᴰ
 │  ✦ *Quality:* High
-├─────────────────
+├────────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
-╰─────────────────⭓`;
+╰───────────⭓`;
 
             await conn.sendMessage(from, {
                 [item.type === 'video' ? 'video' : 'image']: { url: item.url },
@@ -97,7 +97,7 @@ cmd({
 ├─────────────────
 │  ✦ *Status:* ✅ Downloaded
 │  ✦ *Server:* BK9 API
-│  ✦ *By:* PROxABDULLAH-MD
+│  ✦ *By:* ᴬᴸᴵ - ᴹᴰ
 ├─────────────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
 ╰─────────────────⭓`;
@@ -160,7 +160,7 @@ cmd({
 │  👤 *Author:* ${author}
 │  💬 *Caption:* ${captionText}
 │  ❤️ *Likes:* ${likes} | 💭 *Comments:* ${comments}
-│  ⚡ *Downloaded by:* PROxABDULLAH-MD
+│  ⚡ *Downloaded by:* ᴬᴸᴵ - ᴹᴰ
 ├─────────────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
 ╰─────────────────⭓`;
@@ -208,7 +208,7 @@ async (conn, mek, m, { from, args, q, reply }) => {
 ├─────────────────
 │  ✦ *Status:* ✅ Ready
 │  ✦ *Server:* Lily API
-│  ✦ *Downloaded by:* PROxABDULLAH-MD
+│  ✦ *Downloaded by:* ᴬᴸᴵ - ᴹᴰ
 ├─────────────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
 ╰─────────────────⭓`;
@@ -267,7 +267,7 @@ cmd({
 ├─────────────────
 │  👤 *Username:* @${cleanUsername}
 │  🎬 *Type:* ${story.isVideo ? 'Video' : 'Image'}
-│  📥 *Downloaded by:* ALI-MD
+│  📥 *Downloaded by:* ᴬᴸᴵ - ᴹᴰ
 ├─────────────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
 ╰─────────────────⭓`;
@@ -341,7 +341,7 @@ cmd({
 │  👤 *Username:* @${cleanUsername}
 │  📁 *Highlight:* ${title}
 │  🎬 *Type:* ${item.isVideo ? 'Video' : 'Image'}
-│  📥 *Downloaded by:* ALI-MD
+│  📥 *Downloaded by:* ᴬᴸᴵ - ᴹᴰ
 ├─────────────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
 ╰─────────────────⭓`;
