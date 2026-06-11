@@ -43,6 +43,7 @@ async (conn, mek, m, { from, sender, reply }) => {
         desc: `
 *╭┉┉┉┉┉┉┉┉┉┉━┈⊰*
 *┇*❁╭┉┉┉┉┉┉┉━┈⊷
+*┇*✾┋. *_antidelete_*
 *┇*✾┋. *autoreact*
 *┇*✾┋. *_couple or cpp_*
 *┇*✾┋. *_ᴍᴇɴᴜ_*
