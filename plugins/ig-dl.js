@@ -29,7 +29,8 @@ cmd({
 
         for (const item of response.data.data) {
             const caption = 
-`╭─────────────⭓
+`
+╭──────────⭓
 │  📥 *INSTAGRAM DOWNLOADER*
 ├───────────
 │  ✦ *Type:* ${item.type === 'video' ? '🎬 Video' : '📷 Image'}
@@ -37,7 +38,8 @@ cmd({
 │  ✦ *Quality:* High
 ├────────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
-╰───────────⭓`;
+╰───────────⭓
+`;
 
             await conn.sendMessage(from, {
                 [item.type === 'video' ? 'video' : 'image']: { url: item.url },
@@ -92,15 +94,17 @@ cmd({
         const videoBuffer = Buffer.from(videoResponse.data, 'binary');
         
         const caption = 
-`╭─────────────────⭓
+`
+╭───────────⭓
 │  📥 *INSTAGRAM VIDEO*
-├─────────────────
+├───────────
 │  ✦ *Status:* ✅ Downloaded
 │  ✦ *Server:* BK9 API
 │  ✦ *By:* ᴬᴸᴵ - ᴹᴰ
-├─────────────────
+├───────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
-╰─────────────────⭓`;
+╰───────────⭓
+`;
 
         await conn.sendMessage(from, {
             video: videoBuffer,
@@ -154,16 +158,18 @@ cmd({
         await reply('📤 *ᴜᴘʟᴏᴀᴅɪɴɢ ʏᴏᴜʀ ᴠɪᴅᴇᴏ ᴡᴀɪᴛ...*');
 
         const caption = 
-`╭─────────────────⭓
-│  📥 *INSTAGRAM REEL*
-├─────────────────
+`
+╭───────────⭓
+│ 📥 *INSTAGRAM REEL*
+├───────────
 │  👤 *Author:* ${author}
 │  💬 *Caption:* ${captionText}
 │  ❤️ *Likes:* ${likes} | 💭 *Comments:* ${comments}
 │  ⚡ *Downloaded by:* ᴬᴸᴵ - ᴹᴰ
-├─────────────────
+├───────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
-╰─────────────────⭓`;
+╰───────────⭓
+`;
 
         await conn.sendMessage(from, {
             video: { url: videoUrl },
@@ -203,15 +209,17 @@ async (conn, mek, m, { from, args, q, reply }) => {
         const { url } = data.data[0];
         
         const caption = 
-`╭─────────────────⭓
+`
+╭───────────⭓
 │  📥 *INSTAGRAM DOWNLOADER*
-├─────────────────
+├───────────
 │  ✦ *Status:* ✅ Ready
 │  ✦ *Server:* Lily API
 │  ✦ *Downloaded by:* ᴬᴸᴵ - ᴹᴰ
-├─────────────────
+├───────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
-╰─────────────────⭓`;
+╰───────────⭓
+`;
         
         await conn.sendMessage(from, {
             video: { url: url },
@@ -262,15 +270,17 @@ cmd({
         for (const story of storyData) {
             const mediaType = story.isVideo ? 'video' : 'image';
             const caption = 
-`╭─────────────────⭓
+`
+╭───────────⭓
 │  📱 *INSTAGRAM STORY*
-├─────────────────
+├────────────
 │  👤 *Username:* @${cleanUsername}
 │  🎬 *Type:* ${story.isVideo ? 'Video' : 'Image'}
 │  📥 *Downloaded by:* ᴬᴸᴵ - ᴹᴰ
-├─────────────────
+├────────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
-╰─────────────────⭓`;
+╰───────────⭓
+`;
 
             await conn.sendMessage(from, {
                 [mediaType]: { url: story.url },
@@ -335,16 +345,18 @@ cmd({
             for (const item of media) {
                 const mediaType = item.isVideo ? 'video' : 'image';
                 const caption = 
-`╭─────────────────⭓
+`
+╭───────────⭓
 │  ✨ *INSTAGRAM HIGHLIGHT*
-├─────────────────
+├───────────
 │  👤 *Username:* @${cleanUsername}
 │  📁 *Highlight:* ${title}
 │  🎬 *Type:* ${item.isVideo ? 'Video' : 'Image'}
 │  📥 *Downloaded by:* ᴬᴸᴵ - ᴹᴰ
-├─────────────────
+├───────────
 │  *ᴘᴏᴡᴇʀᴇᴅ ʙʏ α𝙻𝙸_𝙼𝙳*
-╰─────────────────⭓`;
+╰───────────⭓
+`;
 
                 await conn.sendMessage(from, {
                     [mediaType]: { url: item.url },
