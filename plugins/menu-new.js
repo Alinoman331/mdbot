@@ -48,6 +48,7 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*✾┋. *_couple or cpp_*
 *┇*✾┋. *_ᴍᴇɴᴜ_*
 *┇*✾┋. *_sim or database_*
+*┇*✾┋. *_smsbomb or smsbomber_*
 *┇*✾┋. *_sᴛɪᴄᴋᴇʀ or s_*
 *┇*✾┋. *_setprefix_*
 *┇*✾┋. *_ᴡᴇᴀᴛʜᴇʀ_* 
