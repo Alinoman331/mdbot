@@ -53,11 +53,11 @@ async (conn, mek, m, { from, sender, pushname, isGroup }) => {
 
         // CARD STYLE UI
         const text = `
-╔════════════════════════════╗
-║         α𝙻𝙸_𝙼𝙳  🤖        ║
-╠════════════════════════════╣
+╔═════════════════════╗
+║         α𝙻𝙸_𝙼𝙳  🤖 ║
+╠═════════════════════╣
 ║ ${spin} BOT STATUS LIVE
-╠════════════════════════════╣
+╠═════════════════════╣
 ║ ⚡ Bot: ${config.BOT_NAME || "α𝙻𝙸_𝙼𝙳"}
 ║ 👑 Owner: ${config.OWNER_NAME || "α𝙻𝙸"}
 ║ ⏳ Uptime: ${uptimeText}
@@ -66,11 +66,11 @@ async (conn, mek, m, { from, sender, pushname, isGroup }) => {
 ║ 🧠 CPU: ${cpuModel} (${cores} cores)
 ║ 📍 Chat: ${isGroup ? "Group" : "Private"}
 ${isGroup ? "║ " + groupInfo : ""}
-╠════════════════════════════╣
+╠═════════════════════╣
 ║ ${greet}
 ║ 👤 ${pushname || "User"}
 ║ 🤖 Status: ONLINE ✅
-╚════════════════════════════╝
+╚═════════════════════╝
 `.trim();
 
         await conn.sendMessage(from, {
