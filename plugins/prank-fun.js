@@ -2,6 +2,7 @@ const { cmd } = require('../command');
 
 cmd({
     pattern: "hack",
+    react: "☠️",
     desc: "Displays a dynamic and playful 'Hacking' message for fun.",
     category: "fun",
     filename: __filename
@@ -17,7 +18,7 @@ async (conn, mek, m, {
         }
 
         const steps = [
-            '💻 *HACK STARTING...* 💻',
+            '💻 *HACK STARTING...* 👾💻',
             
             '*Initializing hacking tools...* 🛠️',
             '*Connecting to remote servers...* 🌐',
@@ -43,7 +44,7 @@ async (conn, mek, m, {
             '⚠️ *Note:* All actions are for demonstration purposes only.',
             '⚠️ *Reminder:* Ethical hacking is the only way to ensure security.',
             
-            '> *PROxABDULLAH-MD-HACKING-COMPLETE ☣*'
+            '> *ALI-MD-HACKING-COMPLETE ☣*'
         ];
 
         for (const line of steps) {
