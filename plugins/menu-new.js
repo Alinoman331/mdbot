@@ -45,7 +45,7 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*❁╭┉┉┉┉┉┉┉━┈⊷
 *┇*✾┋. *_antidelete_*
 *┇*✾┋. *autoreact*
-*┇*✾┋. *emotions,H,S,A,S,NIKAL*
+*┇*✾┋. *emotions,H,S,A,S,moon,NIKAL*
 *┇*✾┋. *_couple or cpp_*
 *┇*✾┋. *_hack---😂_*
 *┇*✾┋. *_ᴍᴇɴᴜ_*
