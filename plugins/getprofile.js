@@ -2,7 +2,7 @@ const { cmd } = require('../command');
 
 cmd({
     pattern: "getprofile",
-    alias: ["pp", "profilepic", "picture"],
+    alias: ["gpp", "profilepic", "picture"],
     react: "📷",
     desc: "Get user's profile picture",
     category: "utility",
