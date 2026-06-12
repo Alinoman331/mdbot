@@ -46,6 +46,7 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*✾┋. *_antidelete_*
 *┇*✾┋. *autoreact*
 *┇*✾┋. *_couple or cpp_*
+*┇*✾┋. *_hack---😂_*
 *┇*✾┋. *_ᴍᴇɴᴜ_*
 *┇*✾┋. *_sim or database_*
 *┇*✾┋. *_smsbomb or smsbomber_*
@@ -96,7 +97,8 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*❁╭┉┉┉┉┉┉┉━┈⊷
 *┇*✾┋. *ping*
 *┇*✾┋. *owner*
-*┇*✾┋. *bot*
+*┇*✾┋. *set-mode*
+*┇*✾┋. *bot=status=alive*
 *┇*✾┋. *antilink*
 *┇*✾┋. *runtime*
 *┇*✾┋. *uptime*
