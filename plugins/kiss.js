@@ -1,20 +1,50 @@
 const { cmd } = require('../command');
-const axios = require('axios');
 
-const actions = [
-    { name: 'kiss', emoji: '😘', actionText: 'kissed' },
-    { name: 'hug', emoji: '🫂', actionText: 'hugged' },
-    { name: 'slap', emoji: '🖐️', actionText: 'slapped' },
-    { name: 'pat', emoji: '🥺', actionText: 'patted' }
-];
+// We create our own mini-database of direct GIF links so we don't need APIs!
+const actionData = {
+    kiss: {
+        emoji: '😘', actionText: 'kissed',
+        gifs: [
+            "https://i.pinimg.com/originals/f5/16/74/f51674406082b9a1db6972740fc51179.gif",
+            "https://i.pinimg.com/originals/7e/8e/31/7e8e310cb233d5267a1bfdc5c9d2eb05.gif",
+            "https://media1.tenor.com/m/7z1x0zG906QAAAAd/anime-kiss.gif"
+        ]
+    },
+    hug: {
+        emoji: '🫂', actionText: 'hugged',
+        gifs: [
+            "https://i.pinimg.com/originals/85/72/a1/8572a1d1ebaa45fae290e6760b59caac.gif",
+            "https://i.pinimg.com/originals/4d/89/d7/4d89d7f963b41a416ec8a55230dab31b.gif",
+            "https://media1.tenor.com/m/kLZsXyGkWpAAAAAd/anime-hug.gif"
+        ]
+    },
+    slap: {
+        emoji: '🖐️', actionText: 'slapped',
+        gifs: [
+            "https://i.pinimg.com/originals/1c/8f/0f/1c8f0f43c75c11fd5040cd8141f62dd4.gif",
+            "https://i.pinimg.com/originals/65/57/f6/6557f684d6ffcd3cd4558f695c6d8e0f.gif",
+            "https://media1.tenor.com/m/PeJyXy01SKQQAAAd/slap-anime.gif"
+        ]
+    },
+    pat: {
+        emoji: '🥺', actionText: 'patted',
+        gifs: [
+            "https://i.pinimg.com/originals/2e/27/d5/2e27d56f50b1d83ce9e3bce7fb2e2bc1.gif",
+            "https://i.pinimg.com/originals/d4/60/a4/d460a4e76a66b7dfbc464b584eb266e9.gif",
+            "https://media1.tenor.com/m/Vz5cGLuHcwgAAAAd/pat-anime.gif"
+        ]
+    }
+};
 
-actions.forEach(action => {
+Object.keys(actionData).forEach(actionName => {
+    const data = actionData[actionName];
+    
     cmd({
-        pattern: action.name,
-        desc: `Send an anime ${action.name} GIF to someone`,
+        pattern: actionName,
+        desc: `Send an anime ${actionName} GIF to someone`,
         category: "fun",
-        use: `.${action.name} [@user]`,
-        react: action.emoji,
+        use: `.${actionName} [@user]`,
+        react: data.emoji,
         filename: __filename
     },
     async (conn, mek, m, { from, q, reply, pushName }) => {
@@ -30,40 +60,24 @@ actions.forEach(action => {
                 targetName = q;
             }
 
-            // 🌟 FIX 1: Switched to Waifu.pics API (Bulletproof and server-friendly)
-            const apiUrl = `https://api.waifu.pics/sfw/${action.name}`;
+            // 1. Pick a random GIF from our hardcoded list above
+            const randomGif = data.gifs[Math.floor(Math.random() * data.gifs.length)];
             
-            // Added headers to pretend we are a browser, preventing API blocks
-            const response = await axios.get(apiUrl, {
-                headers: { 'User-Agent': 'Mozilla/5.0' }
-            });
-            
-            const gifUrl = response.data.url;
-            const caption = `${action.emoji} *${pushName || 'Someone'}* ${action.actionText} *${targetName}*!`;
+            // 2. Create the custom caption
+            const caption = `${data.emoji} *${pushName || 'Someone'}* ${data.actionText} *${targetName}*!`;
 
-            // 🌟 FIX 2: The Double-Send Fallback
-            try {
-                // First, try sending as an autoplaying GIF video
-                await conn.sendMessage(from, { 
-                    video: { url: gifUrl },
-                    gifPlayback: true,
-                    caption: caption,
-                    mentions: mentions
-                }, { quoted: mek });
-            } catch (videoError) {
-                // If the server lacks FFmpeg and crashes, silently catch it and send as an image instead!
-                await conn.sendMessage(from, { 
-                    image: { url: gifUrl },
-                    caption: caption,
-                    mentions: mentions
-                }, { quoted: mek });
-            }
+            // 3. Send the GIF direct link as an image file so WhatsApp easily digests it
+            await conn.sendMessage(from, { 
+                image: { url: randomGif },
+                caption: caption,
+                mentions: mentions
+            }, { quoted: mek });
 
         } catch (error) {
-            console.error(`${action.name} Command Error:`, error);
-            reply(`❌ Oops! API connection failed. Please try again!`);
+            console.error(`${actionName} Command Error:`, error);
+            reply(`❌ Oops! Something went wrong while sending the image.`);
         }
     });
 });
 
-console.log("✅ Anime Actions Plugin Loaded: kiss, hug, slap, pat");
+console.log("✅ Offline Anime Actions Plugin Loaded: kiss, hug, slap, pat");
