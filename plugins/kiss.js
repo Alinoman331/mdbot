@@ -1,81 +1,61 @@
-const { cmd } = require("../command");
-const axios = require("axios");
+const { cmd } = require('../command');
+const axios = require('axios');
 
-cmd(
-    {
-        pattern: "kiss",
-        desc: "Send an animated kiss reaction GIF.",
+// We create an array of all the actions we want to build
+const actions = [
+    { name: 'kiss', emoji: '😘', actionText: 'kissed' },
+    { name: 'hug', emoji: '🫂', actionText: 'hugged' },
+    { name: 'slap', emoji: '🖐️', actionText: 'slapped' },
+    { name: 'pat', emoji: '🥺', actionText: 'patted' }
+];
+
+// This loop automatically creates a unique command for every action above!
+actions.forEach(action => {
+    cmd({
+        pattern: action.name,
+        desc: `Send an anime ${action.name} GIF to someone`,
         category: "fun",
-        react: "💋",
-        filename: __filename,
-        use: "@tag (optional)",
+        use: `.${action.name} [@user]`,
+        react: action.emoji,
+        filename: __filename
     },
-    async (conn, mek, m, { from, quoted }) => {
+    async (conn, mek, m, { from, q, reply, pushName }) => {
         try {
-            const getBuffer = async (url) => {
-                const res = await axios.get(url, { responseType: "arraybuffer" });
-                return Buffer.from(res.data);
-            };
+            // 1. Figure out who we are targeting
+            const mentionedUsers = m.message?.extendedTextMessage?.contextInfo?.mentionedJid || [];
+            let targetName = "everyone";
+            let mentions = [];
 
-            let sender = `@${mek.sender.split("@")[0]}`;
-            let mentionedUser = m.mentionedJid?.[0] || (quoted && quoted.sender);
-            let isGroup = m.isGroup;
-
-            let targetText = mentionedUser
-                ? `@${mentionedUser.split("@")[0]}`
-                : "everyone";
-
-            let message;
-
-            if (mentionedUser) {
-                message = `${sender} kissed ${targetText}`;
-            } else if (isGroup) {
-                message = `${sender} kissed everyone`;
-            } else {
-                message = `> α𝙻𝙸_𝙼𝙳 🖤`;
+            if (mentionedUsers.length > 0) {
+                targetName = `@${mentionedUsers[0].split('@')[0]}`;
+                mentions = mentionedUsers; // Save mentions to tag them in the message
+            } else if (q) {
+                targetName = q; // If they just typed a name without @
             }
 
-            // STEP 1: Typing state / Preparation
-            await conn.sendMessage(from, {
-                text: `💋 *Preparing kiss...*`
-            }, { quoted: mek });
+            // 2. Fetch the random GIF from the stable Nekos API
+            const apiUrl = `https://nekos.best/api/v2/${action.name}`;
+            const response = await axios.get(apiUrl);
+            
+            // 3. Extract the image URL from the API response
+            const gifUrl = response.data.results[0].url;
 
-            await new Promise(r => setTimeout(r, 700));
+            // 4. Create a cute caption
+            const caption = `${action.emoji} *${pushName || 'Someone'}* ${action.actionText} *${targetName}*!`;
 
-            // STEP 2: Getting closer animation
-            await conn.sendMessage(from, {
-                text: `😘 *${sender} is getting closer to ${targetText}...*`,
-                mentions: [mek.sender, mentionedUser].filter(Boolean)
-            }, { quoted: mek });
-
-            await new Promise(r => setTimeout(r, 900));
-
-            // 🔥 WORKING MP4 LINKS FOR WHATSAPP GIFS (NO BLANK SCREEN)
-            const gifs = [
-                "https://media.tenor.com/F02UpDzvBQQAAAPo/anime-kiss.mp4",
-                "https://media.tenor.com/tvURmD-R0U4AAAPo/kiss-anime.mp4",
-                "https://media.tenor.com/el26ZqC0lHIAAAPo/anime-kiss.mp4",
-                "https://media.tenor.com/jnndAhA8X7EAAAPo/anime-kiss.mp4"
-            ];
-
-            const gifUrl = gifs[Math.floor(Math.random() * gifs.length)];
-
-            // ✅ BUFFER FETCH
-            const buffer = await getBuffer(gifUrl);
-
-            // Send final animated GIF (MP4 playing as loop)
-            await conn.sendMessage(from, {
-                video: buffer,
+            // 5. Send it to the chat as an autoplaying GIF
+            await conn.sendMessage(from, { 
+                video: { url: gifUrl }, 
                 gifPlayback: true,
-                caption: message,
-                mentions: [mek.sender, mentionedUser].filter(Boolean)
+                caption: caption,
+                mentions: mentions
             }, { quoted: mek });
 
         } catch (error) {
-            console.log("Kiss Error:", error);
-            await conn.sendMessage(from, {
-                text: `❌ *KISS COMMAND ERROR*\n\n${error.message || error}`
-            }, { quoted: mek });
+            console.error(`${action.name} Command Error:`, error);
+            reply(`❌ Oops! Failed to fetch the ${action.name} GIF. Please try again!`);
         }
-    }
-);
+    });
+});
+
+console.log("✅ Anime Actions Plugin Loaded: kiss, hug, slap, pat");
