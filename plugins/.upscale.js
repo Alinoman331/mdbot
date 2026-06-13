@@ -46,14 +46,11 @@ async (conn, mek, m, { from, reply, quoted, pushName }) => {
         const targetMessage = quoted ? quoted.message : mek.message;
         const imageBuffer = await downloadMedia(targetMessage);
 
-        // 4. Send the image to a free AI Upscaling API (using a standard public endpoint)
-        // We use FormData to package the image file properly for the internet
+        // 4. Send the image to the working free AI Upscaling API
         let formData = new FormData();
         formData.append("image", imageBuffer, { filename: "image.jpg", contentType: "image/jpeg" });
 
-        // Note: Using a public open API for image enhancement. 
-        // If this specific endpoint ever goes down, you can easily swap the URL.
-        const apiResponse = await axios.post('https://api.vyturex.com/upscale', formData, {
+        const apiResponse = await axios.post('https://aemt.me/upscale', formData, {
             headers: {
                 ...formData.getHeaders()
             },
@@ -72,7 +69,7 @@ async (conn, mek, m, { from, reply, quoted, pushName }) => {
 
     } catch (error) {
         console.error("Upscale Command Error:", error);
-        reply("❌ An error occurred while upscaling the image. The image might be too large or the API is currently busy.");
+        reply("❌ An error occurred while upscaling the image. The API might be busy or the image is too large. Please try again in a moment.");
     }
 });
 
