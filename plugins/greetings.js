@@ -39,10 +39,10 @@ function getFallbackMessage(type) {
             "🌜 *Good Evening!* The sun sets, but your achievements shine bright! 💫"
         ],
         night: [
-            // "🌙 *Good Night!* May your dreams be sweet and peaceful. Sleep tight! 💫",
-            // "💤 *Shabakhair!* May angels watch over you as you sleep. Sweet dreams! ✨",
+            "🌙 *Good Night!* May your dreams be sweet and peaceful. Sleep tight! 💫",
+            "💤 *Shabakhair!* May angels watch over you as you sleep. Sweet dreams! ✨",
             "😴 *Night night!* Sleep well and wake up refreshed tomorrow. 🌟",
-            // "🛌 *Sleep tight!* Don't let the bed bugs bite! Good night! 🌙"
+            "🛌 *Sleep tight!* Don't let the bed bugs bite! Good night! 🌙"
         ]
     };
     
@@ -181,7 +181,8 @@ cmd({
     filename: __filename
 }, async (conn, mek, m, { from, quoted, q, isGroup, pushName, reply }) => {
     try {
-        const hour = new Date().getHours();
+        // FIXED TIMEZONE FOR PAKISTAN
+        const hour = parseInt(new Date().toLocaleString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', hour12: false }));
         let type = 'morning';
         
         // Determine type from command or time
