@@ -1,7 +1,6 @@
 const { cmd } = require('../command');
 const axios = require('axios');
 
-// We create an array of all the actions we want to build
 const actions = [
     { name: 'kiss', emoji: '😘', actionText: 'kissed' },
     { name: 'hug', emoji: '🫂', actionText: 'hugged' },
@@ -9,7 +8,6 @@ const actions = [
     { name: 'pat', emoji: '🥺', actionText: 'patted' }
 ];
 
-// This loop automatically creates a unique command for every action above!
 actions.forEach(action => {
     cmd({
         pattern: action.name,
@@ -21,39 +19,49 @@ actions.forEach(action => {
     },
     async (conn, mek, m, { from, q, reply, pushName }) => {
         try {
-            // 1. Figure out who we are targeting
             const mentionedUsers = m.message?.extendedTextMessage?.contextInfo?.mentionedJid || [];
             let targetName = "everyone";
             let mentions = [];
 
             if (mentionedUsers.length > 0) {
                 targetName = `@${mentionedUsers[0].split('@')[0]}`;
-                mentions = mentionedUsers; // Save mentions to tag them in the message
+                mentions = mentionedUsers;
             } else if (q) {
-                targetName = q; // If they just typed a name without @
+                targetName = q;
             }
 
-            // 2. Fetch the random GIF from the stable Nekos API
-            const apiUrl = `https://nekos.best/api/v2/${action.name}`;
-            const response = await axios.get(apiUrl);
+            // 🌟 FIX 1: Switched to Waifu.pics API (Bulletproof and server-friendly)
+            const apiUrl = `https://api.waifu.pics/sfw/${action.name}`;
             
-            // 3. Extract the image URL from the API response
-            const gifUrl = response.data.results[0].url;
-
-            // 4. Create a cute caption
+            // Added headers to pretend we are a browser, preventing API blocks
+            const response = await axios.get(apiUrl, {
+                headers: { 'User-Agent': 'Mozilla/5.0' }
+            });
+            
+            const gifUrl = response.data.url;
             const caption = `${action.emoji} *${pushName || 'Someone'}* ${action.actionText} *${targetName}*!`;
 
-            // 5. Send it to the chat as an autoplaying GIF
-            await conn.sendMessage(from, { 
-                video: { url: gifUrl }, 
-                gifPlayback: true,
-                caption: caption,
-                mentions: mentions
-            }, { quoted: mek });
+            // 🌟 FIX 2: The Double-Send Fallback
+            try {
+                // First, try sending as an autoplaying GIF video
+                await conn.sendMessage(from, { 
+                    video: { url: gifUrl },
+                    gifPlayback: true,
+                    caption: caption,
+                    mentions: mentions
+                }, { quoted: mek });
+            } catch (videoError) {
+                // If the server lacks FFmpeg and crashes, silently catch it and send as an image instead!
+                await conn.sendMessage(from, { 
+                    image: { url: gifUrl },
+                    caption: caption,
+                    mentions: mentions
+                }, { quoted: mek });
+            }
 
         } catch (error) {
             console.error(`${action.name} Command Error:`, error);
-            reply(`❌ Oops! Failed to fetch the ${action.name} GIF. Please try again!`);
+            reply(`❌ Oops! API connection failed. Please try again!`);
         }
     });
 });
