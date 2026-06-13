@@ -1,26 +1,23 @@
 const { cmd } = require('../command');
 
-// A mini-database of direct, safe GIF URLs that the bot will convert into stickers
 const stickerData = {
     kiss: {
         emoji: '😘',
+        // Notice we wrapped the GIF link in the wsrv.nl proxy to force it into a .webp!
         urls: [
-            "https://i.giphy.com/media/G3va31oGhenUZx14CB/giphy.gif",
-            "https://i.giphy.com/media/FqWAhOulhvl16/giphy.gif",
-            "https://i.giphy.com/media/nyzO7EhwQWlzi/giphy.gif"
+            "https://wsrv.nl/?url=https://i.pinimg.com/originals/f5/16/74/f51674406082b9a1db6972740fc51179.gif&output=webp&n=-1",
+            "https://wsrv.nl/?url=https://i.pinimg.com/originals/7e/8e/31/7e8e310cb233d5267a1bfdc5c9d2eb05.gif&output=webp&n=-1"
         ]
     },
     hug: {
         emoji: '🫂',
         urls: [
-            "https://i.giphy.com/media/3M4NpbLCTxBqU/giphy.gif",
-            "https://i.giphy.com/media/lrr9VkEEeP4TC/giphy.gif",
-            "https://i.giphy.com/media/wnsgren9NtITS/giphy.gif"
+            "https://wsrv.nl/?url=https://i.pinimg.com/originals/85/72/a1/8572a1d1ebaa45fae290e6760b59caac.gif&output=webp&n=-1",
+            "https://wsrv.nl/?url=https://i.pinimg.com/originals/4d/89/d7/4d89d7f963b41a416ec8a55230dab31b.gif&output=webp&n=-1"
         ]
     }
 };
 
-// Automatically create commands for both .kiss and .hug
 Object.keys(stickerData).forEach(action => {
     const data = stickerData[action];
     
@@ -34,19 +31,18 @@ Object.keys(stickerData).forEach(action => {
     },
     async (conn, mek, m, { from, reply }) => {
         try {
-            // 1. Pick a random URL from the list
             const randomStickerUrl = data.urls[Math.floor(Math.random() * data.urls.length)];
             
-            // 2. Send it directly as a sticker! 
+            // Sending the pre-converted webp file directly
             await conn.sendMessage(from, { 
                 sticker: { url: randomStickerUrl } 
             }, { quoted: mek });
 
         } catch (error) {
             console.error(`${action} Sticker Error:`, error);
-            reply(`❌ Oops! Failed to send the ${action} sticker.`);
+            reply(`❌ Server conversion failed again.`);
         }
     });
 });
 
-console.log("✅ Sticker Actions Plugin Loaded: kiss, hug");
+console.log("✅ Cloud-Converted Sticker Actions Loaded");
