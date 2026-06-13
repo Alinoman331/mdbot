@@ -59,7 +59,7 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*✾┋. *_t-t-s_*
 *┇*✾┋. *_save , save-status_*
 *┇*✾┋. *_vv or vv2-view-once_*
-*┇*✾┋. *_emotions,hpy,hert,sad,angry,shy,confused,moon,NIKAL_*
+*┇*✾┋. *_emotions,hpy,hert,sad,angry,shy,confuse,moon,NIKAL_*
 *┇*✾╰┉┉┉┉┉┉┉━┈⊷
 *╰┉┉┉┉┉┉┉┉┉┉━┈⊰*
 `,
