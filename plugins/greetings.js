@@ -4,7 +4,7 @@ const axios = require('axios');
 // ====================== COMMON FUNCTIONS ======================
 async function getGreetingMessage(type) {
     const apiEndpoints = {
-        chapri: 'https://shizokeys.onrender.com/api/texts/morning?apikey=shizo',
+        morning: 'https://shizokeys.onrender.com/api/texts/morning?apikey=shizo',
         afternoon: 'https://shizokeys.onrender.com/api/texts/afternoon?apikey=shizo',
         evening: 'https://shizokeys.onrender.com/api/texts/evening?apikey=shizo',
         night: 'https://shizokeys.onrender.com/api/texts/lovenight?apikey=shizo'
@@ -20,7 +20,7 @@ async function getGreetingMessage(type) {
 
 function getFallbackMessage(type) {
     const messages = {
-        chapri: [
+        morning: [
             "🌅 *Good Morning!* May this day bring you success and happiness. Have a blessed day! 🌞",
             "☀️ *Shubh Prabhat!* Wishing you peace, love, and a productive day ahead. ✨",
             "🌄 *Suprabhat!* Rise and shine! Make today amazing! 🌟",
