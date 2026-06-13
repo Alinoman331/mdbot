@@ -22,27 +22,27 @@ function getFallbackMessage(type) {
     const messages = {
         morning: [
             "🌅 *Good Morning!* May this day bring you success and happiness. Have a blessed day! 🌞",
-            "☀️ *Shubh Prabhat!* Wishing you peace, love, and a productive day ahead. ✨",
-            "🌄 *Suprabhat!* Rise and shine! Make today amazing! 🌟",
+            // "☀️ *Shubh Prabhat!* Wishing you peace, love, and a productive day ahead. ✨",
+            // "🌄 *Suprabhat!* Rise and shine! Make today amazing! 🌟",
             "🌤️ *Good Morning!* A new day, new opportunities. Write a beautiful story today! 📖"
         ],
         afternoon: [
             "🌞 *Good Afternoon!* Hope you're having a productive day so far! Keep going! 💪",
-            "🕐 *Shubh Dopahar!* Enjoy your lunch and recharge for the rest of the day! 🍽️",
-            "☀️ *Afternoon!* The day is halfway done, you're doing great! 🚀",
-            "🌇 *Good Afternoon!* Take a break if needed, but don't stop! 🔥"
+            // "🕐 *Shubh Dopahar!* Enjoy your lunch and recharge for the rest of the day! 🍽️",
+            // "☀️ *Afternoon!* The day is halfway done, you're doing great! 🚀",
+            // "🌇 *Good Afternoon!* Take a break if needed, but don't stop! 🔥"
         ],
         evening: [
             "🌆 *Good Evening!* Time to relax and unwind after a long day! 😌",
-            "🌇 *Shubh Sandhya!* May your evening be peaceful and beautiful! ✨",
+            // "🌇 *Shubh Sandhya!* May your evening be peaceful and beautiful! ✨",
             "🌃 *Evening!* Wishing you a calm and joyful evening time! 🌟",
-            "🌜 *Good Evening!* The sun sets, but your achievements shine bright! 💫"
+            // "🌜 *Good Evening!* The sun sets, but your achievements shine bright! 💫"
         ],
         night: [
             "🌙 *Good Night!* May your dreams be sweet and peaceful. Sleep tight! 💫",
-            "💤 *Shabakhair!* May angels watch over you as you sleep. Sweet dreams! ✨",
+            // "💤 *Shabakhair!* May angels watch over you as you sleep. Sweet dreams! ✨",
             "😴 *Night night!* Sleep well and wake up refreshed tomorrow. 🌟",
-            "🛌 *Sleep tight!* Don't let the bed bugs bite! Good night! 🌙"
+            // "🛌 *Sleep tight!* Don't let the bed bugs bite! Good night! 🌙"
         ]
     };
     
