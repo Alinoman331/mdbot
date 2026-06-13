@@ -48,6 +48,7 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*✾┋. *emotions,H,S,A,S,moon,NIKAL*
 *┇*✾┋. *_couple or cpp_*
 *┇*✾┋. *_hack---😂_*
+*┇*✾┋. *_greet,gm,gn,ga,ge_*
 *┇*✾┋. *_ᴍᴇɴᴜ_*
 *┇*✾┋. *_profilepic or gpp_*
 *┇*✾┋. *_sim or database_*
