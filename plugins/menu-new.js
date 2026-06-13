@@ -58,7 +58,7 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*✾┋. *_setprefix_*
 *┇*✾┋. *_ᴡᴇᴀᴛʜᴇʀ_* 
 *┇*✾┋. *_t-t-s_*
-*┇*✾┋. *_sᴀᴠᴇ_*
+*┇*✾┋. *_save-status_*
 *┇*✾┋. *_vv or vv2-view-once_*
 *┇*✾╰┉┉┉┉┉┉┉━┈⊷
 *╰┉┉┉┉┉┉┉┉┉┉━┈⊰*
