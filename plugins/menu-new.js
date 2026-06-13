@@ -45,7 +45,6 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*❁╭┉┉┉┉┉┉┉━┈⊷
 *┇*✾┋. *_antidelete_*
 *┇*✾┋. *autoreact*
-*┇*✾┋. *emotions,H,S,A,S,moon,NIKAL*
 *┇*✾┋. *_couple or cpp_*
 *┇*✾┋. *_hack---😂_*
 *┇*✾┋. *_greet,gm,gn,ga,ge_*
@@ -60,6 +59,7 @@ async (conn, mek, m, { from, sender, reply }) => {
 *┇*✾┋. *_t-t-s_*
 *┇*✾┋. *_save , save-status_*
 *┇*✾┋. *_vv or vv2-view-once_*
+*┇*✾┋. *_emotions,hpy,hert,sad,angry,shy,confused,moon,NIKAL_*
 *┇*✾╰┉┉┉┉┉┉┉━┈⊷
 *╰┉┉┉┉┉┉┉┉┉┉━┈⊰*
 `,
