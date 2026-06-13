@@ -11,12 +11,9 @@ const stickerData = {
     },
     hug: {
         emoji: '🫂',
-        urls: [
-            "https://wsrv.nl/?url=https://i.pinimg.com/originals/85/72/a1/8572a1d1ebaa45fae290e6760b59caac.gif&output=webp&n=-1",
-            "https://wsrv.nl/?url=https://i.pinimg.com/originals/f5/16/74/f51674406082b9a1db6972740fc51179.gif&output=webp&n=-1",
-            "https://wsrv.nl/?url=https://i.pinimg.com/originals/7e/8e/31/7e8e310cb233d5267a1bfdc5c9d2eb05.gif&output=webp&n=-1",            
-            "https://wsrv.nl/?url=https://i.pinimg.com/originals/4d/89/d7/4d89d7f963b41a416ec8a55230dab31b.gif&output=webp&n=-1"
-        ]
+        urls: [ "https://wsrv.nl/?url=https://i.pinimg.com/originals/f5/16/74/f51674406082b9a1db6972740fc51179.gif&output=webp&n=-1",
+            "https://wsrv.nl/?url=https://i.pinimg.com/originals/7e/8e/31/7e8e310cb233d5267a1bfdc5c9d2eb05.gif&output=webp&n=-1"
+   ]
     }
 };
 
